@@ -3,7 +3,7 @@ import time
 import numpy as np
 cap= cv2.VideoCapture(1)
 face_Cascade = cv2.CascadeClassifier('C:\opencv\sources\data\haarcascades\haarcascade_frontalface_alt2.xml')
-kernel = np.array([[-1,-1,-1], 
+#kernel = np.array([[-1,-1,-1], 
                    [-1, 10,-1],
                    [-1,-1,-1]])
 import os
@@ -15,7 +15,7 @@ while True:
      #gray1=cv2.equalizeHist(gray)
      
      #gray2 = cv2.filter2D(gray, -10, gray)
-     #cv2.imshow('frame',gray2)
+     cv2.imshow('frame',gray)
      #cv2.waitKey(1)
      hell = face_Cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
      for (x,y,w,h) in hell :
@@ -29,7 +29,7 @@ while True:
          stroke =3
          endx= x+w
          endy=y+h
-         cv2.rectangle(roi_color,(x,y),(endx,endy),color,stroke)
+         cv2.rectangle(frame,(x,y),(endx,endy),color,stroke)
          cv2.imshow('frame3',frame)
          cv2.waitKey(1)
 cap.release()
